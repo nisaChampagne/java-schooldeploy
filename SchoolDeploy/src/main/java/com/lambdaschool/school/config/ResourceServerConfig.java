@@ -24,7 +24,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
     public void configure(HttpSecurity http) throws Exception
     {
         // http.anonymous().disable();
-        http.authorizeRequests().antMatchers("/",                       // h2
+        http.authorizeRequests().antMatchers("/",
                 "/h2-console/**",
                 "/swagger-resources/**",
                 "/swagger-resources/configuration/ui",
@@ -32,11 +32,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter
                 "/swagger-resource/**",
                 "/swagger-ui.html",
                 "/v2/api-docs",
-                "/webjars/**").permitAll()
-                .antMatchers( "/courses/**", "/students/**").authenticated()
-                .antMatchers("/roles", "/users/**").hasAnyRole("ADMIN")
-                .antMatchers("/actuator/**").hasAnyRole("ADMIN")
+                "/webjars/**",
+                "/createnewuser",
+                "/otherapis/**").permitAll()
+                .antMatchers("/users/**", "/courses/**", "/students/**", "/oauth/revoke-token").authenticated()
+                .antMatchers("/actuator/**", "/roles/**").hasAnyRole("ADMIN")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+
         http.csrf().disable();
         http.headers().frameOptions().disable();
     }

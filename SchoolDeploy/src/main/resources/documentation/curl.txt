@@ -1,0 +1,392 @@
+LOGIN
+$ curl -X POST --user "lambda-client:lambda-secret" -d "grant_type=password&username=admin&password=password"
+https://nchampag-schooldeploy.herokuapp.com/login
+
+{"access_token":"729216c1-24cc-4e3f-8445-d9657b051ab1"","token_type":"bearer","expires_in":2855,
+"scope":"read write trust"}
+---------------------------------------------------------------------
+
+ALL STUDENTS WITH PAGING
+$ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+ https://nchampag-schooldeploy.herokuapp.com/students/students
+{
+ "studid":1,
+"studname":"John",
+"courses":[
+   {
+      "courseid":1,
+      "coursename":"Data Science",
+      "instructor":{
+         "instructid":1,
+         "instructname":"Sally"
+      }
+   },
+   {
+      "courseid":4,
+      "coursename":"Java Back End",
+      "instructor":{
+         "instructid":2,
+         "instructname":"Lucy"
+      }
+   }
+]
+},
+{
+   "studid":2,
+   "studname":"Julian",
+   "courses":[
+      {
+         "courseid":2,
+         "coursename":"JavaScript",
+         "instructor":{
+            "instructid":1,
+            "instructname":"Sally"
+         }
+      }
+   ]
+},
+{
+   "studid":3,
+   "studname":"Mary",
+   "courses":[
+      {
+         "courseid":1,
+         "coursename":"Data Science",
+         "instructor":{
+            "instructid":1,
+            "instructname":"Sally"
+         }
+      },
+      {
+         "courseid":3,
+         "coursename":"Node.js",
+         "instructor":{
+            "instructid":1,
+            "instructname":"Sally"
+         }
+      },
+      {
+         "courseid":6,
+         "coursename":"Mobile Android",
+         "instructor":{
+            "instructid":3,
+            "instructname":"Charlie"
+         }
+      }
+   ]
+}
+]
+
+-----------------------------------------------------------------------
+
+ALL STUDENTS IN GENERAL
+$ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+ https://nchampag-schooldeploy.herokuapp.com/students/allstudents
+[
+   {
+      "studid":1,
+      "studname":"John",
+      "courses":[
+         {
+            "courseid":1,
+            "coursename":"Data Science",
+            "instructor":{
+               "instructid":1,
+               "instructname":"Sally"
+            }
+         },
+         {
+            "courseid":4,
+            "coursename":"Java Back End",
+            "instructor":{
+               "instructid":2,
+               "instructname":"Lucy"
+            }
+         }
+      ]
+   },
+   {
+      "studid":2,
+      "studname":"Julian",
+      "courses":[
+         {
+            "courseid":2,
+            "coursename":"JavaScript",
+            "instructor":{
+               "instructid":1,
+               "instructname":"Sally"
+            }
+         }
+      ]
+   },
+   {
+      "studid":3,
+      "studname":"Mary",
+      "courses":[
+         {
+            "courseid":1,
+            "coursename":"Data Science",
+            "instructor":{
+               "instructid":1,
+               "instructname":"Sally"
+            }
+         },
+         {
+            "courseid":3,
+            "coursename":"Node.js",
+            "instructor":{
+               "instructid":1,
+               "instructname":"Sally"
+            }
+         },
+         {
+            "courseid":6,
+            "coursename":"Mobile Android",
+            "instructor":{
+               "instructid":3,
+               "instructname":"Charlie"
+            }
+         }
+      ]
+   },
+   {
+      "studid":4,
+      "studname":"Julian",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":5,
+      "studname":"Tyler",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":6,
+      "studname":"Kim",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":7,
+      "studname":"Juan",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":8,
+      "studname":"Robby",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":9,
+      "studname":"Roberto",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":10,
+      "studname":"Bob",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":11,
+      "studname":"Liz",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":12,
+      "studname":"June",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":13,
+      "studname":"April",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":35,
+      "studname":"John",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":36,
+      "studname":"Julian",
+      "courses":[
+
+      ]
+   },
+   {
+      "studid":37,
+      "studname":"Mary",
+      "courses":[
+
+      ]
+   }
+]
+
+--------------------------------------------------------------------------
+
+STUDENT BY STUDENT ID
+
+$ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 94c7e0d9-c011-40a0-94fb-d5a6fb4dd954"
+ https://nchampag-schooldeploy.herokuapp.com/students/Student/3
+ {
+         "courseid":3,
+         "coursename":"Node.js",
+         "instructor":{
+            "instructid":1,
+            "instructname":"Sally"
+         }
+      },
+      {
+         "courseid":6,
+         "coursename":"Mobile Android",
+         "instructor":{
+            "instructid":3,
+            "instructname":"Charlie"
+         }
+      }
+   ]
+}
+--------------------------------------------------------------------------------
+
+//NAMELIKE- FIND BY NAME
+
+$ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+https://nchampag-schooldeploy.herokuapp.com/students/student/namelike/John
+     },
+         {
+            "courseid":4,
+            "coursename":"Java Back End",
+            "instructor":{
+               "instructid":2,
+               "instructname":"Lucy"
+            }
+         }
+      ]
+   },
+   {
+      "studid":35,
+      "studname":"John",
+      "courses":[
+
+      ]
+   }
+ }
+ ---------------------------------------------------------------------------------------
+
+ ADD
+
+$ curl -X POST -H "Content-type: application/json"
+-H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1" -d "{\"studname\":\"Nisa\"}"
+ https://nchampag-schooldeploy.herokuapp.com/students/Student
+$ curl -X GET -H "Accept: application/json" -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+https://nchampag-schooldeploy.herokuapp.com/students/student/namelike/Nisa
+Formatted JSON Data
+[
+   {
+      "studid":38,
+      "studname":"Nisa",
+      "courses":[
+
+      ]
+   }
+]
+----------------------------------------------------------------------------------------
+
+UPDATE
+
+$ curl -X PUT -H "Content-type: application/json"
+-H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1" -d "{\"studname\":\"Nissaan\"}"
+ https://nchampag-schooldeploy.herokuapp.com/students/Student/38
+$ curl -X GET -H "Content-type: application/json"
+ -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+  https://nchampag-schooldeploy.herokuapp.com/students/Student/38
+
+{
+   "studid":38,
+   "studname":"Nissaan",
+   "courses":[
+
+   ]
+}
+-----------------------------------------------------------------------------------------------
+DELETE
+
+$ curl -X GET -H "Content-type: application/json"
+-H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+ https://nchampag-schooldeploy.herokuapp.com/students/Student/1
+
+ {
+    "studid":1,
+    "studname":"John",
+    "courses":[
+       {
+          "courseid":1,
+          "coursename":"Data Science",
+          "instructor":{
+             "instructid":1,
+             "instructname":"Sally"
+          }
+       },
+       {
+          "courseid":4,
+          "coursename":"Java Back End",
+          "instructor":{
+             "instructid":2,
+             "instructname":"Lucy"
+          }
+       }
+    ]
+ }
+
+ THEN
+
+$ curl -X DELETE -H "Content-type: application/json"
+ -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+ https://nchampag-schooldeploy.herokuapp.com/students/Student/1
+
+ THEN CHECK ID
+
+ $ curl -X GET -H "Content-type: application/json"
+ -H "Authorization: Bearer 729216c1-24cc-4e3f-8445-d9657b051ab1"
+  https://nchampag-schooldeploy.herokuapp.com/students/Student/1
+
+  {
+     "title":"Resource Not Found",
+     "status":404,
+     "detail":"1",
+     "timestamp":"19 Sep 2019 22:40:44:761",
+     "developerMessage":"com.lambdaschool.school.exceptions.ResourceNotFoundException",
+     "errors":{
+
+     }
+  }
+
+
+
+
+
+
+
+
+
+
